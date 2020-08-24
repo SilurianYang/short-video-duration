@@ -1,4 +1,4 @@
-const ffmpeg = require('fluent-ffmpeg');
+const ffmpeg = require('../ffmpeg');
 const http = require('superagent');
 const logs = require('logs-dir');
 const getPlatFormConfig = require('../base');
@@ -21,7 +21,7 @@ function getDuration(path){
     return new Promise(resolve=>{
         const shareConfig=getPlatFormConfig(path);
         if(shareConfig==null){
-            return resolve({code:206,errorMsg:`此平台目前还不支持，请继续关注！`});       
+            return resolve({code:206,errorMsg:`此平台目前还不支持，请继续关注！`});
         }
         http.get(path)
         .set({
